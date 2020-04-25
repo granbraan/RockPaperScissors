@@ -45,8 +45,8 @@
                     return "YOU LOSE"
                     
             }
-            const playerSelection = "paper"
-            const computerSelection = computerPlay()
+            var playerSelection = 'rock'
+            var computerSelection = computerPlay()
             //console.log(playRound(playerSelection,computerSelection))
             var x = ""
             var playerWin = 0
@@ -56,21 +56,21 @@
                 
                 for(var i=0;i<5;i++)
                 {
+
                     console.log("computer played " + computerPlay() + " against " + playerSelection)
                     x = playRound(playerSelection,computerSelection)
                     if(x == "YOU WIN!")
-                        playerWin += 1
+                        playerWin++
                     else if(x == "YOU LOSE")
-                        computerWin += 1
+                        computerWin++
                 
                 }
-
+                console.log("Player Wins: "+ playerWin)
+                console.log("Bot Wins: " + computerWin)
                 if(playerWin > computerWin)
-                    return "You Win!! " + "Score was " + playerWin + " - " + computerWin
-                else if (playerWin < computerWin)
-                    return "You Lose " + "Score was " + playerWin + " - " + computerWin
+                    return "Winner!!"
                 else
-                    return "Tie!" + playerWin + " - " + computerWin 
+                    return "You Lost :("
                 
             }
             console.log(game())
