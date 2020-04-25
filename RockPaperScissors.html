@@ -15,29 +15,29 @@
         <script>
             function computerPlay()
             {
-                var arr = ["ROCK", "PAPER", "SCISSORS"]
+                let  arr = ["ROCK", "PAPER", "SCISSORS"]
                 return arr[Math.floor(Math.random()*arr.length)]
             }
             
             function playRound(playerSelection, computerSelection)
             {
-                var playerChoice = playerSelection.toUpperCase()
+                let playerChoice = playerSelection.toUpperCase()
                 //rock
-                if(playerChoice == "ROCK" && computerSelection == "ROCK")
+                if(playerChoice == computerSelection)
                     return "TIE"
                 else if(playerChoice == "ROCK" && computerSelection == "SCISSORS")
                     return "YOU WIN!"
                 else
                     return "YOU LOSE"
                 //paper
-                if(playerChoice == "PAPER" && computerSelection == "PAPER")
+                if(playerChoice == computerSelection)
                     return "TIE"
                 else if(playerChoice == "PAPER" && computerSelection == "ROCK")
                     return "YOU WIN!"
                 else
                     return "YOU LOSE"
                 //scissor
-                if(playerChoice == "SCISSORS" && computerSelection == "SCISSORS")
+                if(playerChoice == computerSelection)
                     return "TIE"
                 else if(playerChoice == "SCISSORS" && computerSelection == "PAPER")
                     return "YOU WIN!"
@@ -45,32 +45,36 @@
                     return "YOU LOSE"
                     
             }
-            var playerSelection = 'rock'
-            var computerSelection = computerPlay()
-            //console.log(playRound(playerSelection,computerSelection))
-            var x = ""
-            var playerWin = 0
-            var computerWin = 0
+            let playerWin = 0
+            let computerWin = 0
             function game()
             {
                 
-                for(var i=0;i<5;i++)
+                for(let i=0;i<5;i++)
                 {
-
-                    console.log("computer played " + computerPlay() + " against " + playerSelection)
-                    x = playRound(playerSelection,computerSelection)
+                    let playerSelection = prompt("Choose Rock, Paper, or Scissors: ").toUpperCase()
+                    let computerSelection = computerPlay()
+                    let x = playRound(playerSelection,computerSelection)
                     if(x == "YOU WIN!")
-                        playerWin++
+                    {
+                        console.log("computer played " + computerPlay() + " against " + playerSelection)
+                        playerWin += 1
+                    }
                     else if(x == "YOU LOSE")
-                        computerWin++
+                    {
+                        console.log("computer played " + computerPlay() + " against " + playerSelection)
+                        computerWin += 1
+                    }
+                    else
+                        console.log("computer played " + computerPlay() + " against " + playerSelection)
                 
                 }
-                console.log("Player Wins: "+ playerWin)
-                console.log("Bot Wins: " + computerWin)
                 if(playerWin > computerWin)
-                    return "Winner!!"
+                    return "You Win!! " + "Score was " + playerWin + " - " + computerWin
+                else if (playerWin < computerWin)
+                    return "You Lose " + "Score was " + playerWin + " - " + computerWin
                 else
-                    return "You Lost :("
+                    return "Tie!" + playerWin + " - " + computerWin 
                 
             }
             console.log(game())
